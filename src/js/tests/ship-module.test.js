@@ -7,7 +7,5 @@ test('First battleship hit 3 times', () => {
   newShip.hit();
   newShip.hit();
 
-  console.log(newShip);
-
   expect(newShip.sunk).toBe(true);
 });

@@ -3,6 +3,11 @@ class Ship {
     this.length = length;
     this.sunk = sunk;
     this.numberOfHit = numberOfHit;
+    this.gameboardPlacement = [];
+  }
+
+  setPlacement(coordinates) {
+    this.gameboardPlacement = [...coordinates];
   }
 
   hit() {

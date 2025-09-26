@@ -46,8 +46,6 @@ describe('Gameboard tests', () => {
   });
 
   test('Check hits on ships', () => {
-    const gameboard = createGameboard();
-
     let isHit = gameboard.checkHitOnShips(
       [
         [0, 1],
@@ -58,5 +56,19 @@ describe('Gameboard tests', () => {
     );
 
     expect(isHit).toBe(true);
+
+    gameboard.receiveAttack([4, 4], [batShip1, batShip2, batShip3]);
+    gameboard.receiveAttack([2, 2], [batShip1, batShip2, batShip3]);
+    gameboard.receiveAttack([2, 1], [batShip1, batShip2, batShip3]);
+    gameboard.receiveAttack([3, 1], [batShip1, batShip2, batShip3]);
+    gameboard.receiveAttack([1, 1], [batShip1, batShip2, batShip3]);
+
+    console.log(batShip3);
+    console.log(batShip2);
+    console.log(batShip1);
+    console.log(gameboard);
+
+    expect(batShip3.sunk).toBe(true);
+    expect(batShip1.sunk).toBe(false);
   });
 });

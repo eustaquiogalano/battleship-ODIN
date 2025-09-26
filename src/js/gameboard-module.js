@@ -1,12 +1,15 @@
 class Gameboard {
-  constructor() {
-    this.board = [
-      ['a', 'b', 'c', 'd', 'e'],
-      ['a', 'b', 'c', 'd', 'e'],
-      ['a', 'b', 'c', 'd', 'e'],
-      ['a', 'b', 'c', 'd', 'e'],
-      ['a', 'b', 'c', 'd', 'e'],
-    ];
+  // constructor() {
+  //   this.board = [
+  //     ['a', 'b', 'c', 'd', 'e'],
+  //     ['a', 'b', 'c', 'd', 'e'],
+  //     ['a', 'b', 'c', 'd', 'e'],
+  //     ['a', 'b', 'c', 'd', 'e'],
+  //     ['a', 'b', 'c', 'd', 'e'],
+  //   ];
+  // }
+  constructor(size = 5) {
+    this.board = Array.from({ length: size }, () => Array(size).fill('     '));
   }
 
   // get the ship object
@@ -16,7 +19,7 @@ class Gameboard {
     battleship.setPlacement(coordinates);
 
     for (let [row, column] of coordinates) {
-      this.board[row][column] = 'SHIP';
+      this.board[row][column] = 'SHIP ';
     }
   }
 
@@ -24,11 +27,11 @@ class Gameboard {
     for (let ship of battleships) {
       if (this.checkHitOnShips(ship.gameboardPlacement, enemyAttack)) {
         ship.hit();
-        this.board[enemyAttack[0]][enemyAttack[1]] = 'HIT';
+        this.board[enemyAttack[0]][enemyAttack[1]] = ' HIT ';
         break;
       }
 
-      this.board[enemyAttack[0]][enemyAttack[1]] = 'MISS';
+      this.board[enemyAttack[0]][enemyAttack[1]] = 'MISS ';
     }
   }
 

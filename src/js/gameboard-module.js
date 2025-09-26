@@ -20,8 +20,24 @@ class Gameboard {
     }
   }
 
-  receiveAttack(x, y) {
-    //some implementation
+  receiveAttack(enemyAttack, battleships) {
+    for (let ship of battleships) {
+      if (this.checkHitOnShips(ship.gameboardPlacement, enemyAttack)) {
+        ship.hit();
+        this.board[enemyAttack[0]][enemyAttack[1]] = 'HIT';
+        break;
+      }
+
+      this.board[enemyAttack[0]][enemyAttack[1]] = 'MISS';
+    }
+  }
+
+  checkHitOnShips(shipPlacement, enemyHitMark) {
+    return shipPlacement.some(
+      row =>
+        row.length === enemyHitMark.length &&
+        row.every((val, i) => val === enemyHitMark[i])
+    );
   }
 }
 

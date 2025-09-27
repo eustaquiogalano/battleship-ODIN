@@ -1,6 +1,7 @@
 class Gameboard {
   constructor(size = 5) {
     this.board = Array.from({ length: size }, () => Array(size).fill('     '));
+    this.isLost = false;
   }
 
   // get the ship object
@@ -32,6 +33,16 @@ class Gameboard {
         row.length === enemyHitMark.length &&
         row.every((val, i) => val === enemyHitMark[i])
     );
+  }
+
+  verifyAllShipsSunk(battleships) {
+    for (let ship of battleships) {
+      if (!ship.sunk) {
+        return false;
+      }
+    }
+    this.isLost = true;
+    return true;
   }
 }
 

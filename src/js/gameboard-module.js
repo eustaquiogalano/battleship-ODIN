@@ -1,13 +1,4 @@
 class Gameboard {
-  // constructor() {
-  //   this.board = [
-  //     ['a', 'b', 'c', 'd', 'e'],
-  //     ['a', 'b', 'c', 'd', 'e'],
-  //     ['a', 'b', 'c', 'd', 'e'],
-  //     ['a', 'b', 'c', 'd', 'e'],
-  //     ['a', 'b', 'c', 'd', 'e'],
-  //   ];
-  // }
   constructor(size = 5) {
     this.board = Array.from({ length: size }, () => Array(size).fill('     '));
   }

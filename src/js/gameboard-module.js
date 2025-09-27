@@ -20,6 +20,7 @@ class Gameboard {
       if (this.checkHitOnShips(ship.gameboardPlacement, enemyAttack)) {
         ship.hit();
         this.board[enemyAttack[0]][enemyAttack[1]] = ' HIT ';
+        this.verifyAllShipsSunk(battleships);
         break;
       }
 

@@ -37,13 +37,11 @@ class Gameboard {
   }
 
   verifyAllShipsSunk(battleships) {
-    for (let ship of battleships) {
-      if (!ship.sunk) {
-        return false;
-      }
-    }
-    this.isLost = true;
-    return true;
+    this.isLost = battleships.every(ship => {
+      return ship.sunk;
+    });
+
+    return this.isLost;
   }
 }
 

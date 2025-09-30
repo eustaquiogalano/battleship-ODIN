@@ -27,7 +27,7 @@ describe('Gameboard tests', () => {
     gameboard.placeBattleShip(
       [
         [3, 3],
-        [4, 3],
+        [3, 4],
       ],
       batShip2
     );
@@ -57,7 +57,7 @@ describe('Gameboard tests', () => {
     // attack on ships
     gameboard.receiveAttack([0, 4], [batShip1, batShip2, batShip3]);
     gameboard.receiveAttack([3, 3], [batShip1, batShip2, batShip3]);
-    gameboard.receiveAttack([4, 3], [batShip1, batShip2, batShip3]);
+    gameboard.receiveAttack([3, 4], [batShip1, batShip2, batShip3]);
     gameboard.receiveAttack([1, 1], [batShip1, batShip2, batShip3]);
     gameboard.receiveAttack([2, 1], [batShip1, batShip2, batShip3]);
     gameboard.receiveAttack([3, 1], [batShip1, batShip2, batShip3]);

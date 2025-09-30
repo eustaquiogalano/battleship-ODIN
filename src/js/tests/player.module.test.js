@@ -6,8 +6,8 @@ describe('Player module tests', () => {
   let computer;
 
   beforeAll(() => {
-    human = createHumanPlayer('Mike', createGameboard(5));
-    computer = createComputerPlayer('Robot', createGameboard(5));
+    human = createHumanPlayer('Mike');
+    computer = createComputerPlayer('Robot');
   });
 
   test('Player objects', () => {

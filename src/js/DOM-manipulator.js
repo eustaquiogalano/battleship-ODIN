@@ -1,5 +1,13 @@
 export function displayGrid(size = 5) {
-  let grid = document.querySelector('#user-board');
+  let humanPlayerGrid = document.querySelector('#user-board');
+  let compterPlayerGrid = document.querySelector('#enemy-board');
+
+  createCell(humanPlayerGrid, size);
+  createCell(compterPlayerGrid, size);
+}
+
+function createCell(gameboard, size) {
+  let grid = gameboard;
 
   for (let col = 0; col <= size - 1; col++) {
     for (let row = 0; row <= size - 1; row++) {
@@ -10,5 +18,13 @@ export function displayGrid(size = 5) {
       cell.textContent = `R${row}C${col}`; // optional label
       grid.appendChild(cell);
     }
+  }
+}
+
+export function displayShips(coordinates) {
+  for (let [x, y] of coordinates) {
+    document.querySelector(
+      `[data-row='${x}'][data-col='${y}']`
+    ).style.backgroundColor = 'blue';
   }
 }

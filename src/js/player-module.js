@@ -19,7 +19,7 @@ export function createHumanPlayer(name, size) {
   return humanPlayer;
 }
 
-export function createComputerPlayer(name, size) {
-  let computerPlayer = new Player(name, 'COMPUTER', size);
+export function createComputerPlayer(size) {
+  let computerPlayer = new Player('Computer 1', 'COMPUTER', size);
   return computerPlayer;
 }

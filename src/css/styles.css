@@ -53,19 +53,21 @@ section {
   flex-direction: row;
 }
 
-.gameboards-section > div {
+.gameboard {
   height: 400px;
   width: 400px;
-}
-
-#user-board,
-#attack-board {
   background-color: gray;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
   gap: 0.25rem;
   padding: 0.25rem;
   grid-auto-flow: column;
+}
+
+#user-board {
+}
+
+#enemy-board {
 }
 
 .cell {

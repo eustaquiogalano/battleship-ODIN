@@ -2,7 +2,7 @@ import { createGameboard } from './gameboard-module';
 import { createBattleship } from './ship-module';
 
 class Player {
-  constructor(name, type, boardSize = 5) {
+  constructor(name = 'Player 1', type, boardSize = 5) {
     this.name = name;
     this.type = type;
     this.gameboard = createGameboard(boardSize);
@@ -14,12 +14,12 @@ class Player {
   }
 }
 
-export function createHumanPlayer(name) {
-  let humanPlayer = new Player(name, 'HUMAN');
+export function createHumanPlayer(name, size) {
+  let humanPlayer = new Player(name, 'HUMAN', size);
   return humanPlayer;
 }
 
-export function createComputerPlayer(name) {
-  let computerPlayer = new Player(name, 'COMPUTER');
+export function createComputerPlayer(name, size) {
+  let computerPlayer = new Player(name, 'COMPUTER', size);
   return computerPlayer;
 }

@@ -21,10 +21,12 @@ function createCell(gameboard, size) {
   }
 }
 
-export function displayShips(coordinates) {
-  for (let [x, y] of coordinates) {
-    document.querySelector(
-      `[data-row='${x}'][data-col='${y}']`
-    ).style.backgroundColor = 'blue';
+export function displayShips(player, parentClass) {
+  for (let i = 0; i < player.battleships.length; i++) {
+    for (let [x, y] of player.battleships[i].gameboardPlacement) {
+      document.querySelector(
+        `${parentClass} [data-row='${x}'][data-col='${y}']`
+      ).style.backgroundColor = 'blue';
+    }
   }
 }

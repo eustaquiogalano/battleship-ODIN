@@ -1,15 +1,16 @@
 import { displayGrid, displayShips } from './DOM-manipulator';
 import { createComputerPlayer, createHumanPlayer } from './player-module';
 
+let human;
+let computer;
+
 export function startGame(playerName, size) {
-  let human = createHumanPlayer(playerName, size);
-  let computer = createComputerPlayer(size);
+  human = createHumanPlayer(playerName, size);
+  computer = createComputerPlayer(size);
 
   displayGrid();
   placeDefaultShipCoordinates(human, computer);
   displayShips(human, '#user-board');
-
-  return human;
 }
 
 function placeDefaultShipCoordinates(human, computer) {
@@ -46,4 +47,19 @@ function placeDefaultShipCoordinates(human, computer) {
     ],
     computer.battleships[2]
   );
+}
+
+export function attackGameboard(coordinates, player) {
+  player.gameboard.receiveAttack(coordinates, player.battleships);
+  console.log(player.battleships);
+}
+
+export function getPlayers() {
+  return { human, computer };
+}
+
+export function checkWinner(human, computer) {
+  if (!human.gameboard.isLost && computer.gameboard.isLost) {
+    alert('user wins');
+  }
 }

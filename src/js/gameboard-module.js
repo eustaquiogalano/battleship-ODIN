@@ -16,14 +16,17 @@ class Gameboard {
   }
 
   receiveAttack(enemyAttack, battleships) {
+    let isHit = false;
     for (let ship of battleships) {
       if (this.checkHitOnShips(ship.gameboardPlacement, enemyAttack)) {
         ship.hit();
         this.board[enemyAttack[0]][enemyAttack[1]] = ' HIT ';
         this.verifyAllShipsSunk(battleships);
+        isHit = true;
         break;
       }
-
+    }
+    if (!isHit) {
       this.board[enemyAttack[0]][enemyAttack[1]] = 'MISS ';
     }
   }

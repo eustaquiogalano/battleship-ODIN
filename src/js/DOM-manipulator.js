@@ -30,3 +30,7 @@ export function displayShips(player, parentClass) {
     }
   }
 }
+
+export function markTarget(coordinate) {
+  coordinate.target.style.backgroundColor = 'blue';
+}

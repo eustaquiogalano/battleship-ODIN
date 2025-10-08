@@ -1,4 +1,4 @@
-import { displayGrid, displayShips } from './DOM-manipulator';
+import { clearGameboards, displayGrid, displayShips } from './DOM-manipulator';
 import { createComputerPlayer, createHumanPlayer } from './player-module';
 
 let human;
@@ -62,4 +62,10 @@ export function checkWinner(human, computer) {
   if (!human.gameboard.isLost && computer.gameboard.isLost) {
     alert('user wins');
   }
+}
+
+export function resetGame() {
+  clearGameboards();
+  human = null;
+  computer = null;
 }

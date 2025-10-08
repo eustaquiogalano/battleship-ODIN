@@ -1,21 +1,27 @@
-import { markTarget } from './DOM-manipulator';
+import { displayGrid, markTarget } from './DOM-manipulator';
 import {
   attackGameboard,
   checkWinner,
   getPlayers,
+  resetGame,
   startGame,
 } from './game-controller';
+
+let startButton = document.querySelector('#start-button');
+let enemyBoard = document.querySelector('#enemy-board');
+let resetButton = document.querySelector('#reset-button');
 
 let human;
 let computer;
 
 export function initClickEvents() {
-  document.querySelector('#start-button').addEventListener('click', () => {
+  startButton.addEventListener('click', () => {
+    resetGame();
     startGame();
     ({ human, computer } = getPlayers());
   });
 
-  document.querySelector('#enemy-board').addEventListener('click', event => {
+  enemyBoard.addEventListener('click', event => {
     if (!computer || !event.target.dataset.row) return;
     markTarget(event);
     attackGameboard(
@@ -23,5 +29,12 @@ export function initClickEvents() {
       computer
     );
     checkWinner(human, computer);
+  });
+
+  resetButton.addEventListener('click', () => {
+    resetGame(human, computer);
+    console.log(human);
+    console.log(computer);
+    displayGrid();
   });
 }

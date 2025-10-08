@@ -1,9 +1,22 @@
-export function displayGrid(size = 5) {
-  let humanPlayerGrid = document.querySelector('#user-board');
-  let compterPlayerGrid = document.querySelector('#enemy-board');
+let userBoard;
+let computerBoard;
 
-  createCell(humanPlayerGrid, size);
-  createCell(compterPlayerGrid, size);
+function getGameboards() {
+  if (!userBoard || !computerBoard) {
+    userBoard = document.querySelector('#user-board');
+    computerBoard = document.querySelector('#enemy-board');
+  }
+
+  return { userBoard, computerBoard };
+}
+
+export function displayGrid(size = 5) {
+  // let userBoard = document.querySelector('#user-board');
+  // let computerBoard = document.querySelector('#enemy-board');
+
+  const { userBoard, computerBoard } = getGameboards();
+  createCell(userBoard, size);
+  createCell(computerBoard, size);
 }
 
 function createCell(gameboard, size) {
@@ -33,4 +46,11 @@ export function displayShips(player, parentClass) {
 
 export function markTarget(coordinate) {
   coordinate.target.style.backgroundColor = 'blue';
+}
+
+export function clearGameboards() {
+  const { userBoard, computerBoard } = getGameboards();
+
+  userBoard.innerHTML = '';
+  computerBoard.innerHTML = '';
 }

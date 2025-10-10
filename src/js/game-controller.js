@@ -59,8 +59,10 @@ export function getPlayers() {
 }
 
 export function checkWinner(human, computer) {
-  if (!human.gameboard.isLost && computer.gameboard.isLost) {
-    alert('user wins');
+  if (human.gameboard.isLost) {
+    alert(`${computer.name} wins!`);
+  } else if (computer.gameboard.isLost) {
+    alert(`${human.name} wins!`);
   }
 }
 

@@ -28,7 +28,7 @@ function createCell(gameboard, size) {
       cell.classList.add('cell');
       cell.dataset.row = row; // e.g. "1"
       cell.dataset.col = col; // e.g. "3"
-      cell.textContent = `R${row}C${col}`; // optional label
+      cell.textContent = ``; // optional label
       grid.appendChild(cell);
     }
   }
@@ -45,7 +45,7 @@ export function displayShips(player, parentClass) {
 }
 
 export function markTarget(coordinate) {
-  coordinate.target.style.backgroundColor = 'blue';
+  coordinate.target.style.backgroundColor = 'red';
 }
 
 export function clearGameboards() {

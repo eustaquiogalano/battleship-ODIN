@@ -1,11 +1,8 @@
-import {
-  displayGrid,
-  generateRandomCoordinates,
-  markTarget,
-} from './DOM-manipulator';
+import { displayGrid, markTarget } from './DOM-manipulator';
 import {
   attackGameboard,
   checkWinner,
+  generateRandomCoordinates,
   getPlayers,
   resetGame,
   startGame,

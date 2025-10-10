@@ -71,3 +71,10 @@ export function resetGame() {
   human = null;
   computer = null;
 }
+
+export function generateRandomCoordinates() {
+  let row = Math.floor(Math.random() * 5);
+  let col = Math.floor(Math.random() * 5);
+
+  return [row, col];
+}

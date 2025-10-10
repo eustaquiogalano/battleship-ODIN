@@ -1,4 +1,8 @@
-import { displayGrid, markTarget } from './DOM-manipulator';
+import {
+  displayGrid,
+  generateRandomCoordinates,
+  markTarget,
+} from './DOM-manipulator';
 import {
   attackGameboard,
   checkWinner,
@@ -16,8 +20,17 @@ let computer;
 
 export function initClickEvents() {
   startButton.addEventListener('click', () => {
+    // before starting the game reset the DOM first by using
+    // the resetGame() function
     resetGame();
+
+    // start game
+    // initialize the human and computer player objects
+    // in game-controller module
     startGame();
+
+    // fetch the initialized human and computer player objects
+    // deconstruct in the same name
     ({ human, computer } = getPlayers());
   });
 
@@ -28,6 +41,7 @@ export function initClickEvents() {
       [Number(event.target.dataset.row), Number(event.target.dataset.col)],
       computer
     );
+    attackGameboard(generateRandomCoordinates(), human);
     checkWinner(human, computer);
   });
 

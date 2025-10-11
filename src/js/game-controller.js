@@ -72,9 +72,17 @@ export function resetGame() {
   computer = null;
 }
 
-export function generateRandomCoordinates() {
-  let row = Math.floor(Math.random() * 5);
-  let col = Math.floor(Math.random() * 5);
+export function generateRandomCoordinates(player) {
+  let exist = false;
 
-  return [row, col];
+  while (!exist) {
+    let row = Math.floor(Math.random() * 5);
+    let col = Math.floor(Math.random() * 5);
+    exist = player.gameboard.addToAttackedList([row, col]);
+    if (!exist) {
+      return [row, col];
+    } else {
+      exist = false;
+    }
+  }
 }

@@ -2,6 +2,7 @@ class Gameboard {
   constructor(size = 5) {
     this.board = Array.from({ length: size }, () => Array(size).fill('     '));
     this.isLost = false;
+    this.coordinatesAttackedList = [];
   }
 
   // get the ship object
@@ -29,6 +30,7 @@ class Gameboard {
     if (!isHit) {
       this.board[enemyAttack[0]][enemyAttack[1]] = 'MISS ';
     }
+    this.addToAttackedList(enemyAttack);
   }
 
   checkHitOnShips(shipPlacement, enemyHitMark) {
@@ -45,6 +47,17 @@ class Gameboard {
     });
 
     return this.isLost;
+  }
+
+  addToAttackedList(enemyAttack) {
+    if (!this.checkHitOnShips(this.coordinatesAttackedList, enemyAttack)) {
+      this.coordinatesAttackedList.push([enemyAttack[0], enemyAttack[1]]);
+      return false;
+    } else {
+      console.log(enemyAttack);
+      console.log('listed already');
+      return true;
+    }
   }
 }
 

@@ -11,6 +11,7 @@ import {
 let startButton = document.querySelector('#start-button');
 let enemyBoard = document.querySelector('#enemy-board');
 let resetButton = document.querySelector('#reset-button');
+let userBoard = document.querySelector('#user-board');
 
 let human;
 let computer;
@@ -33,13 +34,36 @@ export function initClickEvents() {
 
   enemyBoard.addEventListener('click', event => {
     if (!computer || !event.target.dataset.row) return;
+
+    // computer attacks
     markTarget(event);
     attackGameboard(
       [Number(event.target.dataset.row), Number(event.target.dataset.col)],
       computer
     );
-    attackGameboard(generateRandomCoordinates(), human);
+
+    // human attacks
+    let [randomRow, randomCol] = generateRandomCoordinates(human);
+    let randomCell = userBoard.querySelector(
+      `[data-row='${randomRow}'][data-col='${randomCol}']`
+    );
+    const userBoardClick = new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+    });
+    randomCell.dispatchEvent(userBoardClick);
+
     checkWinner(human, computer);
+  });
+
+  userBoard.addEventListener('click', event => {
+    if (!computer || !event.target.dataset.row) return;
+    markTarget(event);
+    attackGameboard(
+      [Number(event.target.dataset.row), Number(event.target.dataset.col)],
+      human
+    );
   });
 
   resetButton.addEventListener('click', () => {
